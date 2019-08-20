@@ -28,13 +28,7 @@ class UserController extends BaseController
         return array($image, $imageRoute);
 
     }
-    function checkIfUserInfoIsValid($request){
-        $validatedData = $request->validate([
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'user_type' => ['required', 'string', 'max:255'],
-            ]);
-    }
+   
     public function read()
     {
         list($image, $imageRoute) = $this->fetchProfileImage();

@@ -31,6 +31,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function () {
+    
+// {{ phone($user['phone'], 'US'); }}
+});
+
 Route::get('/create', function () {
     $user=user::find(1);
     $user->image()->create(['url'=>'example.jpg']);
