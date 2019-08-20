@@ -42,10 +42,3 @@ Route::get('/update', function () {
     echo $image->url="Stuff.jph";
     $image->save();
 });
-
-Route::get('/getImage', function () {
-    // $user=user::find(1);
-    //  echo $image= $user->image->url;
-     echo $something_cool;
-     
-});
