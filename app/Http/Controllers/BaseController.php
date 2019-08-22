@@ -14,6 +14,7 @@ class BaseController extends Controller {
 
 
        View::share ( 'profileImageLocation', 'uploads/profileImages/' );
+       View::share ( 'homeImageLocation', '/uploads/homeImages/' );
        View::share ( 'variable2', $variable2 );
        View::share ( 'variable3', 'I am Data 3' );
        View::share ( 'variable4', ['name'=>'Franky','address'=>'Mars'] );

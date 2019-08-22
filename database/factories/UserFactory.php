@@ -17,6 +17,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+
     // User Type
     $userTypeArray = array("realtor", "broker", "seller");
     $randIndex = array_rand($userTypeArray);

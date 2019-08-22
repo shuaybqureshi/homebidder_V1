@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Image;
+use App\Property;
 
-class UserImageTableSeeder extends Seeder
+class PropertyFactorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class UserImageTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 50;
-        factory(Image::class, $count)->create();
+        $count = 10;
+        factory(Property::class, $count)->create();
     }
 }

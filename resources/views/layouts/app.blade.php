@@ -38,8 +38,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
-                    </ul>
+                            <a class="nav-link" href="{{ route('viewAllListing') }}">{{ __('View All Listing') }}</a>
+                        </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -62,9 +62,14 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('userinfo') }}">
-                                     
                                         {{ __('User Info') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('createListing') }}">
+                                            {{ __('Upload Listing') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('MyListings') }}">
+                                                {{ __('My Listings') }}
+                                            </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
@@ -83,6 +88,11 @@
         </nav>
 
         <main class="py-4">
+                @if(session()->has('message'))
+                <div class="alert alert-success">
+                      {{ session()->get('message') }}
+                  </div>
+              @endif
             @yield('content')
         </main>
     </div>

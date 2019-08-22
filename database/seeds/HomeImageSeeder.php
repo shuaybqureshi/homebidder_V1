@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Image;
 
-class UserImageTableSeeder extends Seeder
+class HomeImageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class UserImageTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 50;
+        $count = 1;
         factory(Image::class, $count)->create();
     }
 }
