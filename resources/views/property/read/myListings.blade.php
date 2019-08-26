@@ -35,7 +35,7 @@
             @foreach ($propertyArray as $property)
             <br>
             <div class="card">
-                    <div class="card-header">{{$property['address']}}</div>
+                    <div class="card-header"><a href="/Listing/{{$property->property_id}}">{{$property['address']}}</a></div>
                     <div class="card-body">
                             <div class="row">
                                 <div class="col-md-3">
@@ -47,6 +47,7 @@
                                         @csrf
                                 <input type="number" name="property_id" value="{{$property->id}}" hidden />
                                         <button class="btn btn-danger" > Delete Listing</button>
+                                        <input  class="btn btn-success"  type="submit" formaction="/listingOfferDetails" value="View Offers">
                                 </form>
                                 </div>
                             <div class="col-md-3">
@@ -55,10 +56,12 @@
                                     <div for="year" class=""><strong>Year Built:</strong> {{$property['year']}}</div>
                                     <div for="taxes" class=""><strong>Taxes:</strong> {{$property['taxes']}}</div>
                             </div>
-
                             <div class="col-md-6 text-md-right">
+                                    <a href="/Listing/{{$property->property_id}}"> 
                                     <img src="uploads\homeImages\{{$property['image']}}"  height="200"/>
+                                    </a>
                             </div>
+                            
                     </div>
                     </div>
                 </div>

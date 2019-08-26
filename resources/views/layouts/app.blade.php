@@ -67,9 +67,12 @@
                                     <a class="dropdown-item" href="{{ route('createListing') }}">
                                             {{ __('Upload Listing') }}
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('MyListings') }}">
-                                                {{ __('My Listings') }}
-                                            </a>
+                                    <a class="dropdown-item" href="{{ route('MyListings') }}">
+                                            {{ __('My Listings') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('myoffers') }}">
+                                             {{ __('My Offers') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">

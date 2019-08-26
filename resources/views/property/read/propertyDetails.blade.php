@@ -16,6 +16,41 @@
             </div>
         </div> 
         <br>
+        <div class="card">
+                        <div class="card-header">{{ __('Buyer Info') }}</div>
+                        <div class="card-body">
+                        <div class="row">
+                        <div class="col-md-12 text-md-left">
+                                        <div class="col-md-6 text-md-left">
+                                                        <div>
+                                                          <strong>Name :</strong>  <a href="/user?userid={{$seller->id}}" > {{$seller->first_name}} {{$seller->last_name}}
+                                                        </a>
+                                                        </div>
+                                                        <div><strong>Company:</strong> {{$seller->company_name}}</div>
+                                                        <div><strong>Phone:</strong> {{$seller->phone}}</div>
+                                        </div>
+                        </div>                
+                        </div>
+                        </div>
+                        </div>
+        <br>
+<div class="card">
+<div class="card-header">{{ __('Action') }}</div>
+<div class="card-body">
+<div class="row">
+<div class="col-md-12 text-md-left">
+        <form method="POST" action="{{ route('createOffer') }}">
+                @csrf
+<input type="number" name="property_id" value="{{$property->id}}" hidden/>
+<button type="submit" class="btn btn-primary">
+        {{ __('Make an Offer') }}
+</form>
+</button>                                
+</div>                
+</div>
+</div>
+</div>
+<br>
 
         <div class="card">
                 <div class="card-header">{{ __('Property Info') }}</div>

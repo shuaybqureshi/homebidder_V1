@@ -54,6 +54,15 @@ class UserController extends BaseController
         $user->fill($input)->save();
         return back()->with('message', 'User Info Successfully Updated!');
     }
+    public function readUserInfo()
+    {
+         $user= User::find($_GET['userid']);
+         $image=$user->image()->first();
+        // list($image, $imageRoute) = $this->fetchProfileImage();
+        // return view('realtorInfo.readUser', compact("image", "imageRoute"));
+        return view('realtorinfo.readUser', compact('user','image'));
+    }
+  
 
     public function uploadImage(Request $request)
     {
@@ -89,5 +98,16 @@ class UserController extends BaseController
         // Move Uploaded File
         $file->move($this->destinationPath, $newFileName);
         return back()->with('message', 'Image Sucessfully Updated');
+    }
+    public function sucessfulRegistration(Request $request)
+    {
+        $name= Auth::user()->first_name;
+        $title= "Sucessful Registration";
+        $subTitle= "Your account has been successfully registered";
+        $para= "Hi $name, you have successfully registered an account with us!";
+        $buttonText="View Listings";
+        $buttonRoute="/Listings";
+        return view('dummyMessage', compact("title", "subTitle", "para", "buttonText","buttonRoute"));
+
     }
 }

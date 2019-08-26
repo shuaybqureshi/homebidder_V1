@@ -18,4 +18,8 @@ class Property extends Model
     {
         return $this->morphMany('App\Image', 'imageable');
     }
+    public function offer()
+    {
+        return $this->hasMany('App\Offer');
+    }
 }

@@ -45,4 +45,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Property');
     }
+    public function offer()
+    {
+        return $this->hasMany('App\Offer');
+    }
 }
