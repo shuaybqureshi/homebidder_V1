@@ -6,9 +6,6 @@
         <h2>Listings</h2>
     </div>
 </section>
-<div class="top-pagination-container">
-        {{$propertyArray->links()}}
-            </div>
 <section class="hotel-rooms spad">
         <div class="container">
             <div class="row">
@@ -46,13 +43,12 @@
                                 <p>For Sale</p>
                                 <span>${{$property['price']}}</span>
                             </div>
-                        <a href="/Listing?listing={{$property['id']}}" class="site-btn btn-line">View Property</a>
+                            <a href="#" class="site-btn btn-line">View Property</a>
                         </div>
                     </div>
                 </div>
 
                 @endforeach
-                {{$propertyArray->links()}}
                 {{-- End Loop --}}
            
         </div>

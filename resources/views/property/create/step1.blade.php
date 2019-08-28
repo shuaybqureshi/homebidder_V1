@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.app_2')
 
 @section('content')
 <div class="container"> 
     <div class="title-container"> 
-    <h1> Upload Listing</h1>
+     <h1> Upload Listing</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="form-group row">
-                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('city') }}</label>
+                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
     
                                 <div class="col-md-6">
                                     <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="mls" autofocus>
@@ -93,7 +93,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn sq-primary-color">
                                     {{ __('Proceed to Step 2') }}
                                 </button>
                             </div>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_2')
 
 @section('content')
 
@@ -42,13 +42,8 @@
                                     <div for="mls" class=""><strong>MLS Number:</strong> {{$property['mls']}}</div>
                                     <div for="status" class=""><strong>Status:</strong> {{$property['status']}}</div>
                                     <div for="price" class=""><strong>Asking Price:</strong> {{$property['price']}}</div>
-                                <a href="/editListing/{{$property->id}}" class="btn btn-primary" > Edit Listing</a>
-                                <form method="POST" action="{{ route('deleteListing') }}">
-                                        @csrf
-                                <input type="number" name="property_id" value="{{$property->id}}" hidden />
-                                        <button class="btn btn-danger" > Delete Listing</button>
-                                        <input  class="btn btn-success"  type="submit" formaction="/listingOfferDetails" value="View Offers">
-                                </form>
+                                    <div class="button-container">
+                                    </div>
                                 </div>
                             <div class="col-md-3">
                                     <div for="bed" class=""><strong>Bedrooms:</strong> {{$property['bed']}}</div>
@@ -61,7 +56,18 @@
                                     <img src="uploads\homeImages\{{$property['image']}}"  height="200"/>
                                     </a>
                             </div>
-                            
+        <div class="col-md-12">
+        <div class="button-container">
+        <form method="POST" action="/deleteListing">
+            @csrf
+        {{-- <a href="/editListing/{{$property['id']}}" class="btn btn-warning"> Edit Listing</a> --}}
+        <input type="number" name="property_id" value="{{$property['id']}}" hidden="">
+        <button formaction="/editListing" class="btn btn-warning"> Edit Listing</button>
+        <button class="btn btn-danger"> Delete Listing</button>
+        <input class="btn btn-success" type="submit" formaction="/listingOfferDetails" value="View Offers">
+        </form>
+        </div>
+        </div>
                     </div>
                     </div>
                 </div>
@@ -72,7 +78,9 @@
                 <div class=" row text-center">
 
                     <div class="col-md-12 ">
+                            <div class="title-container"> 
                         <h1> You have no listings</h1>
+                                    </div>
                         <a href="/createListing" class="btn btn-primary">
                             Upload Listing
                         </a>
@@ -83,5 +91,6 @@
        @endif
 
     </div>
+</div>
 </div>
 @endsection

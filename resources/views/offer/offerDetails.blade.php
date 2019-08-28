@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.app_2')
 
 @section('content')
 <div class="container">
         <div class="title-container"> 
-                <h1>Offer Details</h1>
+                <h1 class="sq-main-title">Property Details</h1>
         </div>
     <div class="row justify-content-center">
             <div class="col-md-12">
@@ -25,7 +25,7 @@
                                     <div for="taxes" class=""><strong>Taxes:</strong> {{$property['taxes']}}</div>
                             </div>
                         <div class="col-md-6 text-md-right">
-                                <img src="uploads\homeImages\default.png"  height="200"/>
+                                <img src="uploads\homeImages\{{$property['image']}}"  height="200"/>
                         </div>
                 </div>
                 </div>
@@ -35,7 +35,9 @@
 <br>
 
 <div class="row justify-content-center">
-<h2> Offer History </h2> <br>
+        <div class="title-container"> 
+                <h1 class="sq-main-title">Offer History</h1>
+        </div>
         <div class="col-md-12">
 <?php $i=1; ?>
                 @foreach ($offersArray as $offer)
@@ -67,5 +69,6 @@
                 @endforeach
             
     </div>
+</div>
 </div>
 @endsection

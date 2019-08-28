@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/custom-styles_1.css') }}" type="text/css">
 </head>
 
 <body>
@@ -40,38 +41,72 @@
                             <img src="img/logo.png" alt="">
                         </a>
                     </div>
-                    <ul class="main-menu">
-                        <li><a href="./index.html">Home</a></li>
-                        <li><a href="./search.html">Search Results</a></li>
-                        <li><a href="./about.html">Categories</a></li>
-                        <li><a href="./single-property.html">Single Property</a></li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
-
-                        <li class="top-social">
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
-                        </li>
-                    </ul>
-                    <div id="mobile-menu-wrap"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><ul class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                        <li><a href="./index.html" role="menuitem" tabindex="-1">Home</a></li>
-                        <li><a href="./search.html" role="menuitem" tabindex="-1">Search Results</a></li>
-                        <li><a href="./about.html" role="menuitem" tabindex="-1">Categories</a></li>
-                        <li><a href="./single-property.html" role="menuitem" tabindex="-1">Single Property</a></li>
-                        <li><a href="./blog.html" role="menuitem" tabindex="-1">Blog</a></li>
-                        <li><a href="./contact.html" role="menuitem" tabindex="-1">Contact</a></li>
-
-                        <li class="top-social">
-                            <a href="#" role="menuitem" tabindex="-1"><i class="fa fa-pinterest"></i></a>
-                            <a href="#" role="menuitem" tabindex="-1"><i class="fa fa-facebook"></i></a>
-                            <a href="#" role="menuitem" tabindex="-1"><i class="fa fa-twitter"></i></a>
-                            <a href="#" role="menuitem" tabindex="-1"><i class="fa fa-dribbble"></i></a>
-                            <a href="#" role="menuitem" tabindex="-1"><i class="fa fa-behance"></i></a>
-                        </li>
-                    </ul></div></div>
+                    
+                <nav class="navbar navbar-sq navbar-expand-md navbar-dark ">
+                        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">View Homes</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sq-mobile-nav order-0">
+                            {{-- <a class="navbar-brand mx-auto" href="#">Navbar 2</a> --}}
+                            <button class=" bg-dark navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                            <ul class="navbar-nav ml-auto">
+                                @guest
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    </li>
+                                @endif
+                              @else 
+                                  <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->first_name }} <span class="caret"></span>
+                                    </a>
+                                    
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('userinfo') }}">
+                                            {{ __('User Info') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('createListing') }}">
+                                                {{ __('Upload Listing') }}
+                                            </a>
+                                        <a class="dropdown-item" href="{{ route('MyListings') }}">
+                                                {{ __('My Listings') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('myoffers') }}">
+                                                 {{ __('My Offers') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                      document.getElementById('logout-form').submit();">
+                                         {{ __('Logout') }}
+                                     </a>
+    
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                                @endguest
+                            </ul>
+                        </div>
+                    </nav>
+                
+                
+                </div></div>
                 </div>
             </div>
         </div>
@@ -84,317 +119,7 @@
             <h1>dream home.</h1>
         </div>
     </section>
-    <!-- Hero Section End -->
-    
     <!-- Hotel Room Section Begin -->
-    <section class="hotel-rooms spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="room-items">
-                        <div class="room-img set-bg" data-setbg="img/rooms/1.jpg" style="background-image: url(&quot;img/rooms/1.jpg&quot;);">
-                            <a href="#" class="room-content">
-                                <i class="flaticon-heart"></i>
-                            </a>
-                        </div>
-                        <div class="room-text">
-                            <div class="room-details">
-                                <div class="room-title">
-                                    <h5>Country Style House with beautiful garden and terrace</h5>
-                                    <a href="#"><i class="flaticon-placeholder"></i> <span>Location</span></a>
-                                    <a href="#" class="large-width"><i class="flaticon-cursor"></i> <span>Show on
-                                            Map</span></a>
-                                </div>
-                            </div>
-                            <div class="room-features">
-                                <div class="room-info">
-                                    <div class="size">
-                                        <p>Lot Size</p>
-                                        <img src="img/rooms/size.png" alt="">
-                                        <i class="flaticon-bath"></i>
-                                        <span>2561 sqft</span>
-                                    </div>
-                                    <div class="beds">
-                                        <p>Beds</p>
-                                        <img src="img/rooms/bed.png" alt="">
-                                        <span>9</span>
-                                    </div>
-                                    <div class="baths">
-                                        <p>Baths</p>
-                                        <img src="img/rooms/bath.png" alt="">
-                                        <span>2</span>
-                                    </div>
-                                    <div class="garage">
-                                        <p>Garage</p>
-                                        <img src="img/rooms/garage.png" alt="">
-                                        <span>1</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="room-price">
-                                <p>For Sale</p>
-                                <span>$345,000</span>
-                            </div>
-                            <a href="#" class="site-btn btn-line">View Property</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="room-items">
-                        <div class="room-img set-bg" data-setbg="img/rooms/2.jpg" style="background-image: url(&quot;img/rooms/2.jpg&quot;);">
-                            <a href="#" class="room-content">
-                                <i class="flaticon-heart"></i>
-                            </a>
-                        </div>
-                        <div class="room-text">
-                            <div class="room-details">
-                                <div class="room-title">
-                                    <h5>Country Style House with beautiful garden and terrace</h5>
-                                    <a href="#"><i class="flaticon-placeholder"></i> <span>Location</span></a>
-                                    <a href="#" class="large-width"><i class="flaticon-cursor"></i> <span>Show on
-                                            Map</span></a>
-                                </div>
-                            </div>
-                            <div class="room-features">
-                                <div class="room-info">
-                                    <div class="size">
-                                        <p>Lot Size</p>
-                                        <img src="img/rooms/size.png" alt="">
-                                        <i class="flaticon-bath"></i>
-                                        <span>2561 sqft</span>
-                                    </div>
-                                    <div class="beds">
-                                        <p>Beds</p>
-                                        <img src="img/rooms/bed.png" alt="">
-                                        <span>9</span>
-                                    </div>
-                                    <div class="baths">
-                                        <p>Baths</p>
-                                        <img src="img/rooms/bath.png" alt="">
-                                        <span>2</span>
-                                    </div>
-                                    <div class="garage">
-                                        <p>Garage</p>
-                                        <img src="img/rooms/garage.png" alt="">
-                                        <span>1</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="room-price">
-                                <p>For Sale</p>
-                                <span>$345,000</span>
-                            </div>
-                            <a href="#" class="site-btn btn-line">View Property</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="room-items">
-                        <div class="room-img set-bg" data-setbg="img/rooms/3.jpg" style="background-image: url(&quot;img/rooms/3.jpg&quot;);">
-                            <a href="#" class="room-content">
-                                <i class="flaticon-heart"></i>
-                            </a>
-                        </div>
-                        <div class="room-text">
-                            <div class="room-details">
-                                <div class="room-title">
-                                    <h5>Country Style House with beautiful garden and terrace</h5>
-                                    <a href="#"><i class="flaticon-placeholder"></i> <span>Location</span></a>
-                                    <a href="#" class="large-width"><i class="flaticon-cursor"></i> <span>Show on
-                                            Map</span></a>
-                                </div>
-                            </div>
-                            <div class="room-features">
-                                <div class="room-info">
-                                    <div class="size">
-                                        <p>Lot Size</p>
-                                        <img src="img/rooms/size.png" alt="">
-                                        <i class="flaticon-bath"></i>
-                                        <span>2561 sqft</span>
-                                    </div>
-                                    <div class="beds">
-                                        <p>Beds</p>
-                                        <img src="img/rooms/bed.png" alt="">
-                                        <span>9</span>
-                                    </div>
-                                    <div class="baths">
-                                        <p>Baths</p>
-                                        <img src="img/rooms/bath.png" alt="">
-                                        <span>2</span>
-                                    </div>
-                                    <div class="garage">
-                                        <p>Garage</p>
-                                        <img src="img/rooms/garage.png" alt="">
-                                        <span>1</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="room-price">
-                                <p>For Sale</p>
-                                <span>$345,000</span>
-                            </div>
-                            <a href="#" class="site-btn btn-line">View Property</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="room-items">
-                        <div class="room-img set-bg" data-setbg="img/rooms/4.jpg" style="background-image: url(&quot;img/rooms/4.jpg&quot;);">
-                            <a href="#" class="room-content">
-                                <i class="flaticon-heart"></i>
-                            </a>
-                        </div>
-                        <div class="room-text">
-                            <div class="room-details">
-                                <div class="room-title">
-                                    <h5>Country Style House with beautiful garden and terrace</h5>
-                                    <a href="#"><i class="flaticon-placeholder"></i> <span>Location</span></a>
-                                    <a href="#" class="large-width"><i class="flaticon-cursor"></i> <span>Show on
-                                            Map</span></a>
-                                </div>
-                            </div>
-                            <div class="room-features">
-                                <div class="room-info">
-                                    <div class="size">
-                                        <p>Lot Size</p>
-                                        <img src="img/rooms/size.png" alt="">
-                                        <i class="flaticon-bath"></i>
-                                        <span>2561 sqft</span>
-                                    </div>
-                                    <div class="beds">
-                                        <p>Beds</p>
-                                        <img src="img/rooms/bed.png" alt="">
-                                        <span>9</span>
-                                    </div>
-                                    <div class="baths">
-                                        <p>Baths</p>
-                                        <img src="img/rooms/bath.png" alt="">
-                                        <span>2</span>
-                                    </div>
-                                    <div class="garage">
-                                        <p>Garage</p>
-                                        <img src="img/rooms/garage.png" alt="">
-                                        <span>1</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="room-price">
-                                <p>For Sale</p>
-                                <span>$345,000</span>
-                            </div>
-                            <a href="#" class="site-btn btn-line">View Property</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="room-items">
-                        <div class="room-img set-bg" data-setbg="img/rooms/5.jpg" style="background-image: url(&quot;img/rooms/5.jpg&quot;);">
-                            <a href="#" class="room-content">
-                                <i class="flaticon-heart"></i>
-                            </a>
-                        </div>
-                        <div class="room-text">
-                            <div class="room-details">
-                                <div class="room-title">
-                                    <h5>Country Style House with beautiful garden and terrace</h5>
-                                    <a href="#"><i class="flaticon-placeholder"></i> <span>Location</span></a>
-                                    <a href="#" class="large-width"><i class="flaticon-cursor"></i> <span>Show on
-                                            Map</span></a>
-                                </div>
-                            </div>
-                            <div class="room-features">
-                                <div class="room-info">
-                                    <div class="size">
-                                        <p>Lot Size</p>
-                                        <img src="img/rooms/size.png" alt="">
-                                        <i class="flaticon-bath"></i>
-                                        <span>2561 sqft</span>
-                                    </div>
-                                    <div class="beds">
-                                        <p>Beds</p>
-                                        <img src="img/rooms/bed.png" alt="">
-                                        <span>9</span>
-                                    </div>
-                                    <div class="baths">
-                                        <p>Baths</p>
-                                        <img src="img/rooms/bath.png" alt="">
-                                        <span>2</span>
-                                    </div>
-                                    <div class="garage">
-                                        <p>Garage</p>
-                                        <img src="img/rooms/garage.png" alt="">
-                                        <span>1</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="room-price">
-                                <p>For Sale</p>
-                                <span>$345,000</span>
-                            </div>
-                            <a href="#" class="site-btn btn-line">View Property</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="room-items">
-                        <div class="room-img set-bg" data-setbg="img/rooms/6.jpg" style="background-image: url(&quot;img/rooms/6.jpg&quot;);">
-                            <a href="#" class="room-content">
-                                <i class="flaticon-heart"></i>
-                            </a>
-                        </div>
-                        <div class="room-text">
-                            <div class="room-details">
-                                <div class="room-title">
-                                    <h5>Country Style House with beautiful garden and terrace</h5>
-                                    <a href="#"><i class="flaticon-placeholder"></i> <span>Location</span></a>
-                                    <a href="#" class="large-width"><i class="flaticon-cursor"></i> <span>Show on
-                                            Map</span></a>
-                                </div>
-                            </div>
-                            <div class="room-features">
-                                <div class="room-info">
-                                    <div class="size">
-                                        <p>Lot Size</p>
-                                        <img src="img/rooms/size.png" alt="">
-                                        <i class="flaticon-bath"></i>
-                                        <span>2561 sqft</span>
-                                    </div>
-                                    <div class="beds">
-                                        <p>Beds</p>
-                                        <img src="img/rooms/bed.png" alt="">
-                                        <span>9</span>
-                                    </div>
-                                    <div class="baths">
-                                        <p>Baths</p>
-                                        <img src="img/rooms/bath.png" alt="">
-                                        <span>2</span>
-                                    </div>
-                                    <div class="garage">
-                                        <p>Garage</p>
-                                        <img src="img/rooms/garage.png" alt="">
-                                        <span>1</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="room-price">
-                                <p>For Sale</p>
-                                <span>$345,000</span>
-                            </div>
-                            <a href="#" class="site-btn btn-line">View Property</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hotel Room Section End -->
-    <!-- Popular Room Section Begin -->
-    
-    <!-- Popular Room Section End -->
-    <!-- Newslatter Section Begin -->
-    
-    <!-- Newslatter Section End -->
-    <!-- Servies Section Begin -->
     <section class="services-section">
         <div class="container">
             <div class="row">
@@ -514,23 +239,11 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row p-20">
-                <div class="col-lg-12 text-center">
-                    <div class="copyright">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright ©<script>document.write(new Date().getFullYear());</script>2019 All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-                    </div>
-                </div>
-            </div>
         </div>
     </footer>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
@@ -538,8 +251,6 @@ Copyright ©<script>document.write(new Date().getFullYear());</script>2019 All r
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-
-
 </body>
 
 </html>

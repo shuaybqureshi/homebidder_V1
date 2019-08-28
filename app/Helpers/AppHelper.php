@@ -19,8 +19,9 @@ class AppHelper
                         $property->$key=$value;
                         }
                 }
-                    $image=$property->image()->first();
-                    $property->image=$image->url;
+                    $image=$property->image()->first(); 
+                    
+                    $property->image= $image['url'];;
             }
             return ($propertyArray);
           

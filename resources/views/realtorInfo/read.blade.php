@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_2')
 
 @section('content')
 <div class="container">
@@ -15,8 +15,8 @@
                     <div class="card-body">
                             @if($image)     
                     <div class=" row text-center">
-                            <img src='{{$profileImageLocation}}{{$image->url}}' height='200px' style="margin: auto;"/>
-                            <br>
+                                <img class="sq-profile-pic-wrapper" src="{{$profileImageLocation}}{{$image->url}}" height='200px' style="margin: auto;"/>
+                                <br>
                     </div>
                     @endif
                     <div class="user-card-details-container text-center">
@@ -29,7 +29,7 @@
                     
                     </div>
                     <div class="form-group row justify-content-center">
-                                <a href="/editUserInfo" class="btn btn-primary">
+                                <a href="/editUserInfo" class="btn btn-warning">
                                     {{ __('Edit Info') }}
                                 </a>
                     </div>

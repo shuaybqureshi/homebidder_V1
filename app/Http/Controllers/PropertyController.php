@@ -108,8 +108,9 @@ class PropertyController extends BaseController
         $propertyArray=AppHelper::getpropertyDetails($propertyArray);
         return view('property.read.myListings', compact("propertyArray"));
     }
-    public function editListing(Request $request, $id)
+    public function editListing(Request $request)
     {
+$id=$_POST['property_id'];
         $request->session()->put('property_id', $id);
         $property= Property::find($id);
         return view('property.edit.step1', compact("property"));
@@ -155,24 +156,40 @@ class PropertyController extends BaseController
     }
     public function viewAllListing(Request $request)
     {
-        $propertyArray= Property::where('status', 'active')->get();
+        $propertyArray = Property::where('status', 'active')->paginate(6);
+
+        // $propertyArray= Property::where('status', 'active')->get();
         $propertyArray=AppHelper::getpropertyDetails($propertyArray);
         return view('property.read.allListing', compact("propertyArray"));
     }
-    public function ListingDetails($id)
+    public function viewAllListingN(Request $request)
     {
+        $propertyArray= Property::where('status', 'active')->get();
+        $propertyArray=AppHelper::getpropertyDetails($propertyArray);
+        return view('newStyles.allisting', compact("propertyArray"));
+        // return view ('newStyles.allisting');
+
+    }
+    
+    public function ListingDetails(){
+       $id= $_GET['listing'];
+
         $propertyArray= Property::where('id', $id)->get();
     
         $propertyArray=AppHelper::getpropertyDetails($propertyArray);
         $seller_id= Property::find($id)->user_id;
-        $seller=User::find($seller_id);
-    
+         $seller=User::find($seller_id);
+        $seller['image'] =$seller->image->url;
+        // echo $seller->image;
         foreach ($propertyArray as $key => $property_single) {
             $property= $property_single;
         }
         $images=$property->image()->get();
-        return view('property.read.propertyDetails', compact("property", "images", "seller"));
+
+        return view('newStyles.singleProperty', compact("property", "images", "seller"));
+        // return view('newStyles.singleProperty');
     }
+    
     public function sellerRedirect(){
         $name= Auth::user()->first_name;
         $title= "Forbidden";
@@ -182,6 +199,21 @@ class PropertyController extends BaseController
         $buttonRoute="/Listings";
         return view('dummyMessage', compact("title", "subTitle", "para", "buttonText","buttonRoute"));
     }
+    // public function ListingDetails($id)
+    // {
+    //     $propertyArray= Property::where('id', $id)->get();
+    
+    //     $propertyArray=AppHelper::getpropertyDetails($propertyArray);
+    //     $seller_id= Property::find($id)->user_id;
+    //     $seller=User::find($seller_id);
+    
+    //     foreach ($propertyArray as $key => $property_single) {
+    //         $property= $property_single;
+    //     }
+    //     $images=$property->image()->get();
+    //     return view('property.read.propertyDetails', compact("property", "images", "seller"));
+
+    // }
 
     
 }

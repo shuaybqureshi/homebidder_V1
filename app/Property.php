@@ -22,4 +22,11 @@ class Property extends Model
     {
         return $this->hasMany('App\Offer');
     }
+    public function getPriceAttribute($value)
+    {
+        if ($_SERVER['REQUEST_URI']!='/editListing') {
+            $value= number_format($value) ;
+        }
+            return ucfirst($value);
+    }
 }

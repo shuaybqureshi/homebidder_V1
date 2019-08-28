@@ -10,5 +10,13 @@ class Offer extends Model
     protected $fillable = [
         'user_id', 'property_id', 'value','deposit' , 'conditions','status'
     ];
+    public function getDepositAttribute($value){
+        $value= number_format ($value) ;
+        return ucfirst($value);
+    }
+    public function getValueAttribute($value){
+        $value= number_format ($value) ;
+        return ucfirst($value);
+    }
 
 }

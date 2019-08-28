@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_2')
 
 @section('content')
 <div class="container">
@@ -39,8 +39,9 @@
     </div>
 </div>
 @if (count ($offersActiveArray))
-    <h1 style="text-align:center"> Active  Offers</h1>
-@endif
+<div class="title-container"> 
+        <h1>Active Offers</h1>
+</div>@endif
 <?php $i=1; ?>
     <div class="row justify-content-center">
                 <div class="col-md-10">
@@ -97,7 +98,9 @@
 </div>
 </div>
 @if (count ($offersInActiveArray))
-<h1 style="text-align:center"> In Active  Offers </h1>
+<div class="title-container margin-1"> 
+        <h1>In-Active Offers</h1>
+</div>
 @endif
 
 <?php $i=1; ?>
@@ -165,9 +168,9 @@
                 </div>
 
                 @endif
-                 <br>
-                 <br>
+                 
     </div>
+</div>
 </div>
 
 @endsection

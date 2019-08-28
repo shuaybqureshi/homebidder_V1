@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_2')
 
 @section('content')
 <div class="container">
@@ -121,25 +121,6 @@
         </div>
     </div>
 </div>
-<script>
-      $(document).ready(function() {
-        //   alert('test');
-        $('#btn_edit').click(function(event){
-            event.preventDefault()
-            $("input.form-control").attr("readonly", false);
-            $(this).hide();
-            $('#btn_cancel, #btn_submit').show();
-        });
-        $('#btn_cancel').click(function(event){
-            event.preventDefault();
-            $("input.form-control").attr("readonly", true);
-            $('#btn_cancel, #btn_submit').hide();
 
-            $('#btn_edit').show();
-        });
-
-      
-
-  });  
-    </script>
+    
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_2')
 
 @section('content')
 <div class="container">
@@ -15,9 +15,9 @@
                     <div class="card-body">
                             @if($image)     
                             
-                    <div class=" row text-center">
+                    <div class="row text-center">
                                 {{-- <img src="uploads/profileImages/profile-image-102.jpg" height="200px" style="margin: auto;"> --}}
-                            <img src="{{$profileImageLocation}}{{$image->url}}" height='200px' style="margin: auto;"/>
+                            <img class="sq-profile-pic-wrapper" src="{{$profileImageLocation}}{{$image->url}}" height='200px' style="margin: auto;"/>
                             <br>
                     </div>
                     @endif

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_2')
 
 @section('content')
 <div class="container"> 
@@ -32,7 +32,7 @@
 
                             <div class="col-md-6">
                                 <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value={{$property->price}} required autocomplete="price" autofocus>
-
+                               
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="form-group row">
-                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('city') }}</label>
+                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
     
                                 <div class="col-md-6">
                                     <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $property->city }}" required autocomplete="mls" autofocus>
@@ -89,7 +89,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn sq-primary-color">
                                     {{ __('Proceed to Step 2') }}
                                 </button>
                             </div>

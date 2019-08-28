@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.app_2')
 
 @section('content')
 <div class="container"> 
     <div class="title-container"> 
-    <h1> Step 2</h1>
+    <h1> Final Step</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -15,7 +15,7 @@
                         @csrf
 
                         <div class="form-group row text-center">
-                            <label for="image-1" class="col-md-12 col-form-label text-md-center">{{ __('image-1') }}</label>
+                            <label for="image-1" class="col-md-12 col-form-label text-md-center">{{ __('Images') }}</label>
                             <div class="col-md-12">
                                 <input type="file"  class=" form-control  @error('image-1') is-invalid @enderror" name="image-1" id="image-1">
                                 @error('image-1')
@@ -74,8 +74,8 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Proceed to Step 3') }}
+                                <button type="submit" class="btn sq-primary-color">
+                                    {{ __('Upload Listing') }}
                                 </button>
                             </div>
                         </div>

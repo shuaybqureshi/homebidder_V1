@@ -13,7 +13,7 @@ class HomeController extends BaseController
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
         parent::__construct();
 
     }
@@ -29,6 +29,10 @@ class HomeController extends BaseController
     }
     public function newstyle()
     {   
-        return view('newHome');
+        return view('newstyle');
+    }
+    public function newListingDetails()
+    {   
+        return view('newListingDetails');
     }
 }
