@@ -12,7 +12,7 @@ class PropertyFactorySeeder extends Seeder
      */
     public function run()
     {
-        $count = 10;
+        $count = 25;
         factory(Property::class, $count)->create();
     }
 }

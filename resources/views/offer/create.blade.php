@@ -39,7 +39,7 @@
                         <div class="form-group row">
                             <label for="conditions" class="col-md-12 col-form-label"> {{ __('Conditions') }}</label>
                             <div class="col-md-12">
-                                <textarea id = "conditions" name="conditions"  class="form-control @error('conditions') is-invalid @enderror"  rows="5" style="width: 100%">Enter Condtions</textarea>
+                                <textarea id = "conditions" name="conditions"  class="form-control @error('conditions') is-invalid @enderror"  rows="5" style="width: 100%">Enter Conditions    </textarea>
                                 @error('conditions')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

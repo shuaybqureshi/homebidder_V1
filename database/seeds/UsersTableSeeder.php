@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 100;
+        $count = 25;
         factory(User::class, $count)->create();
     }
 }

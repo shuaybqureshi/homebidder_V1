@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="container">
-        <div class="title-container"> 
+        <div class="title-container  "> 
                 <h1>Offer Details</h1>
         </div>
     <div class="row justify-content-center">
             <div class="col-md-10">
              <div class="card">
                 <div class="card-header">
-                <a href="/Listing/{{$property->property_id}}"> 
+                <a href="/Listing?listing={{$property->property_id}}"> 
                         {{ $property->address }}
                         </a>
                         </div>
@@ -28,7 +28,7 @@
                                     <div for="taxes" class=""><strong>Taxes:</strong> {{$property['taxes']}}</div>
                             </div>
                         <div class="col-md-6 text-md-right">
-                                        <a href="/Listing/{{$property->property_id}}">
+                                        <a href="/Listing?listing={{$property->property_id}}">
                                         <img src="uploads\homeImages\{{$property['image']}}"  height="200"/>
                                         </a>
                         </div>
@@ -39,7 +39,7 @@
     </div>
 </div>
 @if (count ($offersActiveArray))
-<div class="title-container"> 
+<div class="title-container  margin-1"> 
         <h1>Active Offers</h1>
 </div>@endif
 <?php $i=1; ?>
@@ -51,7 +51,8 @@
                     <div class="card-body">
                             <div class=" row">
                                     <div class="col-md-6">
-                                            <label><strong>Offer Value:</strong></label> ${{$offer->value}}
+                                            <label><strong>Offer Value:</strong></label> ${{$offer->value}} <br>
+                                            <label><strong>Offer Status:</strong></label>{{$offer->status}} 
                                     </div>
                                     <div class="col-md-6">
                                             <label><strong>Deposit:</strong></label> ${{$offer->deposit}}
@@ -80,6 +81,9 @@
                                         </div>
                                </div>
                         </div>
+                        @if ($offer->status!="accept")
+
+                 
                         <div class="form-group row mb-0">
                                         <div class="col-md-12 ">
                                                         <form method="POST">
@@ -90,6 +94,7 @@
                                                         </form>      
                                 </div>
                                     </div>
+                                    @endif
         </div>
                 </div>
                  <br>

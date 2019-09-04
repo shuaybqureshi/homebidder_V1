@@ -38,8 +38,8 @@
                             <img src="img/single-property/1.jpg" alt="">
                         </div></div> --}}
                         @foreach ($images as $image)
-                        <div class="owl-item active" style="width: 930px; height:400px"><div class="single-img">
-                                <img src='{{$homeImageLocation}}{{$image->url}}' height="400px" />
+                        <div class="owl-item active" style="width: 930px; height:500px"><div class="single-img">
+                                <img src='{{$homeImageLocation}}{{$image->url}}' height="500px" />
                             </div></div>
             
             @endforeach

@@ -125,14 +125,20 @@ class OfferController extends Controller
 
     public function acceptOffer(Request $request)
     {
-         $offer_id=$_POST['offer_id'];
-         Offer::find($offer_id)->update(['status' => 'accept']);
-         $offer=Offer::find($offer_id);
+        $offer_id=$_POST['offer_id'];
+        // Accept the winning bid 
+        Offer::find($offer_id)->update(['status' => 'accept']);
+        $offer=Offer::find($offer_id);
+        // Reject all other active bids
         Offer::where([
         ['property_id', '=', $offer->property_id],
         ['status', '=', 'active'],
         ['id', '!=', $offer_id],
         ])->update(['status' => 'reject']);
+        // change the status of the house
+        $property=Property::find($offer->property_id);
+        $property->status= "sold";
+        $property->save();     
     
         return back()->with('message', ' Sucessfully Accepted');
     }

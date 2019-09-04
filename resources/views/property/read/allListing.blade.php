@@ -6,19 +6,23 @@
         <h2>Listings</h2>
     </div>
 </section>
-<div class="top-pagination-container">
-        {{$propertyArray->links()}}
-            </div>
+
 <section class="hotel-rooms spad">
-        <div class="container">
+<div class="container">
+        <div class="row">
+        <div class="col-md-12">
+        <div class="top-pagination-container">
+        {{$propertyArray->links()}}
+        </div>
+        </div>
+        </div>
             <div class="row">
+
                 {{-- Start Loop --}}
                 @foreach ($propertyArray as $property)
                 <div class="col-lg-4 col-md-6">
                     <div class="room-items">
                             <div class="room-img set-bg" data-setbg="uploads/homeImages/{{$property['image']}}" style="background-image: url(&quot;uploads/homeImages/{{$property['image']}}&quot;);">
-
-                        {{-- <div class="room-img set-bg" data-setbg="uploads\homeImages\{{$property['image']}}" style="background-image: url(&quot;uploads/homeImages/{{$property['image']}}&quot;);"> --}}
                         </div>
                         <div class="room-text">
                             <div class="room-details">

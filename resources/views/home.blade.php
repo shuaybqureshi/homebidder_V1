@@ -6,7 +6,7 @@
     <section class="hero-section home-page set-bg" data-setbg="img/bg.jpg" style="background-image: url(&quot;img/bg.jpg&quot;);">
         <div class="container hero-text text-white">
             <h2>Find your next</h2>
-            <h1>dream home.</h1>
+            <h1>Dream Home.</h1>
         </div>
     </section>
     <!-- Hotel Room Section Begin -->

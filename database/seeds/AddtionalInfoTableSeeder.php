@@ -12,7 +12,7 @@ class AddtionalInfoTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 10;
+        $count = 25;
         factory(AddtionalPropertyInfo::class, $count)->create();
     }
 }

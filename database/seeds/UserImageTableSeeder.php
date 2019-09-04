@@ -12,7 +12,7 @@ class UserImageTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 50;
+        $count = 125;
         factory(Image::class, $count)->create();
     }
 }
